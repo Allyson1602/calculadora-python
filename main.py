@@ -22,10 +22,33 @@ frame_tela.grid(row=0, column=0)
 frame_corpo = Frame(janela, width=235, height=268)
 frame_corpo.grid(row=1, column=0)
 
+todos_valores = ""
+texto_label = StringVar()
+
+
+def entrar_valores(valor):
+    global todos_valores
+
+    todos_valores = todos_valores + str(valor)
+
+    texto_label.set(todos_valores)
+
+
+def calcular():
+    resultado = eval(todos_valores)
+    texto_label.set(str(resultado))
+
+
+def limpar_tela():
+    global todos_valores
+    todos_valores = ""
+    texto_label.set("")
+
+
 # label
 app_label = Label(
     frame_tela,
-    text="123456789",
+    textvariable=texto_label,
     width=16,
     height=2,
     padx=7,
@@ -41,6 +64,7 @@ app_label.place(x=0, y=0)
 # botões
 botao_limpar = Button(
     frame_corpo,
+    command=lambda: limpar_tela(),
     text="C",
     width=11,
     height=2,
@@ -51,8 +75,9 @@ botao_limpar = Button(
 )
 botao_limpar.place(x=0, y=0)
 
-botao_porceto = Button(
+botao_porcento = Button(
     frame_corpo,
+    command=lambda: entrar_valores("%"),
     text="%",
     width=5,
     height=2,
@@ -61,10 +86,11 @@ botao_porceto = Button(
     relief=RAISED,
     overrelief=RIDGE
 )
-botao_porceto.place(x=118, y=0)
+botao_porcento.place(x=118, y=0)
 
 botao_barra = Button(
     frame_corpo,
+    command=lambda: entrar_valores("/"),
     text="/",
     width=5,
     height=2,
@@ -78,6 +104,7 @@ botao_barra.place(x=177, y=0)
 
 botao_sete = Button(
     frame_corpo,
+    command=lambda: entrar_valores("7"),
     text="7",
     width=5,
     height=2,
@@ -90,6 +117,7 @@ botao_sete.place(x=0, y=52)
 
 botao_oito = Button(
     frame_corpo,
+    command=lambda: entrar_valores("8"),
     text="8",
     width=5,
     height=2,
@@ -102,6 +130,7 @@ botao_oito.place(x=59, y=52)
 
 botao_nove = Button(
     frame_corpo,
+    command=lambda: entrar_valores("9"),
     text="9",
     width=5,
     height=2,
@@ -114,6 +143,7 @@ botao_nove.place(x=118, y=52)
 
 botao_asterisco = Button(
     frame_corpo,
+    command=lambda: entrar_valores("*"),
     text="*",
     width=5,
     height=2,
@@ -127,6 +157,7 @@ botao_asterisco.place(x=177, y=52)
 
 botao_quatro = Button(
     frame_corpo,
+    command=lambda: entrar_valores("4"),
     text="4",
     width=5,
     height=2,
@@ -139,6 +170,7 @@ botao_quatro.place(x=0, y=104)
 
 botao_cinco = Button(
     frame_corpo,
+    command=lambda: entrar_valores("5"),
     text="5",
     width=5,
     height=2,
@@ -151,6 +183,7 @@ botao_cinco.place(x=59, y=104)
 
 botao_seis = Button(
     frame_corpo,
+    command=lambda: entrar_valores("6"),
     text="6",
     width=5,
     height=2,
@@ -163,6 +196,7 @@ botao_seis.place(x=118, y=104)
 
 botao_subtracao = Button(
     frame_corpo,
+    command=lambda: entrar_valores("-"),
     text="-",
     width=5,
     height=2,
@@ -176,6 +210,7 @@ botao_subtracao.place(x=177, y=104)
 
 botao_um = Button(
     frame_corpo,
+    command=lambda: entrar_valores("1"),
     text="1",
     width=5,
     height=2,
@@ -188,6 +223,7 @@ botao_um.place(x=0, y=156)
 
 botao_dois = Button(
     frame_corpo,
+    command=lambda: entrar_valores("2"),
     text="2",
     width=5,
     height=2,
@@ -200,6 +236,7 @@ botao_dois.place(x=59, y=156)
 
 botao_tres = Button(
     frame_corpo,
+    command=lambda: entrar_valores("3"),
     text="3",
     width=5,
     height=2,
@@ -212,6 +249,7 @@ botao_tres.place(x=118, y=156)
 
 botao_adicao = Button(
     frame_corpo,
+    command=lambda: entrar_valores("+"),
     text="+",
     width=5,
     height=2,
@@ -225,6 +263,7 @@ botao_adicao.place(x=177, y=156)
 
 botao_zero = Button(
     frame_corpo,
+    command=lambda: entrar_valores("0"),
     text="0",
     width=11,
     height=2,
@@ -237,6 +276,7 @@ botao_zero.place(x=0, y=208)
 
 botao_ponto = Button(
     frame_corpo,
+    command=lambda: entrar_valores("."),
     text=".",
     width=5,
     height=2,
@@ -249,6 +289,7 @@ botao_ponto.place(x=118, y=208)
 
 botao_igual = Button(
     frame_corpo,
+    command=lambda: calcular(),
     text="=",
     width=5,
     height=2,
